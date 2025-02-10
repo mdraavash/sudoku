@@ -287,7 +287,10 @@ int main() {
     {
         vector<vector<char>> board = su.user_board();
         soln.solveSudoku(board);
+<<<<<<< HEAD
         cout<<"Solved Board is:"<<endl;
+=======
+>>>>>>> 2c9a09cae25c574120dbfa0ff179fee6dbd346dc
         print_board(board);
         break;
     }
@@ -295,6 +298,7 @@ int main() {
     {
         vector<vector<char>> expected_board = sg.generate_board();  
         vector<vector<char>> encoded_board = sg.encode(expected_board);
+<<<<<<< HEAD
         cout<<"The generated board is: \n Press any key to start: \n"<<endl;
         print_board(encoded_board);
         cin>>hold;
@@ -305,13 +309,23 @@ int main() {
         print_board(encoded_board);
         cout<<"expected"<<endl;
         print_board(expected_board);
+=======
+        soln.solveSudoku(encoded_board);
+
+        cout << (encoded_board == expected_board ? "Success!" : "Failed!") << endl;
+        print_board(encoded_board);
+>>>>>>> 2c9a09cae25c574120dbfa0ff179fee6dbd346dc
         break;
     }
     default:
         cout << "Not a Valid Option!" << endl;
         break;
     }
+<<<<<<< HEAD
     cout<<"press any button to quit!"<<endl;
     cin >> hold; 
+=======
+    cin >> choice; 
+>>>>>>> 2c9a09cae25c574120dbfa0ff179fee6dbd346dc
     return 0;
 }
