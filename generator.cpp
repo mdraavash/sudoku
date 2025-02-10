@@ -90,7 +90,7 @@ public:
         {
             for(size_t j=0;j<9;j++)
             {
-                if(!getrandom())
+                if(getrandom())
                 {
                     temp[i][j] = '.';
                 }
