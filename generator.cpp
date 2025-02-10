@@ -10,17 +10,14 @@ constexpr size_t get_cell(size_t row, size_t col) noexcept {
     return (row / 3) * 3 + col / 3;
 }
 
-class Sudoku {
+class Sudokugenerator {
+private:
     array<bitset<9>, 9> row_contains;
     array<bitset<9>, 9> col_contains;
     array<bitset<9>, 9> cell_contains;
     vector<vector<char>> board;
     mt19937 gen;
 
-public:
-    Sudoku() : gen(random_device{}()) {
-        board.resize(9, vector<char>(9, '0'));
-    }
 
     bool is_valid(int row, int col, int num) {
         size_t cell = get_cell(row, col);
@@ -81,7 +78,11 @@ public:
         shuffle(condition.begin(), condition.end(), gen);
         return condition[0];
     }
+public:
 
+    Sudokugenerator() : gen(random_device{}()) {
+        board.resize(9, vector<char>(9, '0'));
+    }
     vector<vector<char>> encode (vector<vector<char>> &board)
     {
         vector<vector<char>> temp = board;
@@ -118,7 +119,7 @@ void print_board(vector<vector<char>> &board)
 }
 
 int main() {
-    Sudoku s;
+    Sudokugenerator s;
     vector<vector<char>> expected = s.generate_board();
     print_board(expected);
     vector<vector<char>> board=s.encode(expected);

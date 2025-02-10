@@ -4,8 +4,8 @@
 
 using namespace std;
 
-class sudoku {
-public:
+class sudokuUser {
+private:
     void print_user_board(const vector<vector<string>>& board) {
         cout << "\nBoard Layout (Row,Column Positions):\n";
         for (size_t row = 0; row < 9; ++row) {
@@ -25,7 +25,7 @@ public:
         }
         print_user_board(board);
     }
-
+public:
     vector<vector<char>> user_board() {
         vector<vector<char>> board(9, vector<char>(9, '.'));
         cout << "\nEnter the position at which you want to enter the value along with the value:" << endl;
@@ -56,7 +56,6 @@ public:
 
         return board;
     }
-
     void print_board(const vector<vector<char>>& board) {
         cout << "\nSudoku Board:\n";
         cout << "  -----------------------------------------------------\n";
@@ -71,7 +70,7 @@ public:
 };
 
 int main() {
-    sudoku s;
+    sudokuUser s;
     vector<vector<char>> board = s.user_board();
     s.print_board(board);
     return 0;
