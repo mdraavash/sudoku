@@ -75,24 +75,54 @@ public:
         return false;
     }
 
+    bool getrandom()
+    {
+        vector<bool> condition = {true, false, false};
+        shuffle(condition.begin(), condition.end(), gen);
+        return condition[0];
+    }
+
+    vector<vector<char>> encode (vector<vector<char>> &board)
+    {
+        vector<vector<char>> temp = board;
+        for(size_t i=0;i<9;i++)
+        {
+            for(size_t j=0;j<9;j++)
+            {
+                if(!getrandom())
+                {
+                    temp[i][j] = '.';
+                }
+            }
+        }
+        return temp;
+    }
+
+
     vector<vector<char>> generate_board() {
         generate();
         return board;
     }
 };
 
-void print_board(const vector<vector<char>>& board) {
-    for (size_t row = 0; row < 9; ++row) {
-        for (size_t col = 0; col < 9; ++col) {
-            cout << board[row][col] << " ";
+void print_board(vector<vector<char>> &board)
+{
+    for(size_t row = 0; row < 9; ++row)
+    {
+        for(size_t col = 0; col<9; ++col)
+        {
+            cout<< board[row][col] << "  |  ";
         }
-        cout << "\n";
+        cout<<"\n";
     }
 }
 
 int main() {
     Sudoku s;
-    vector<vector<char>> board = s.generate_board();
+    vector<vector<char>> expected = s.generate_board();
+    print_board(expected);
+    vector<vector<char>> board=s.encode(expected);
+    cout<<"\n\n\n";
     print_board(board);
     return 0;
 }
