@@ -1,3 +1,5 @@
+Sudoku
+-
 This is a sudoko generator along with solver in C++. This was done as a project in DSA.
 Just compile and run the main program and enjoy the process!
 You get two options to either input your own suduko or use a generated one!
